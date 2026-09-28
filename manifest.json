@@ -1,0 +1,17 @@
+{
+    "name": "Bikash Jewellers Rough Estimate",
+    "short_name": "Bikash Jewellers",
+    "description": "Rough Estimate Generator for Bikash Jewellers",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#8a5a25",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

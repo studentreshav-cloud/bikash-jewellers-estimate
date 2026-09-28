@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bikash Jewellers - Rough Estimate</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ENTRY SCREEN
+    ========================== -->
+
+    <div id="entryScreen">
+
+        <h1>Bikash Jewellers</h1>
+
+        <p>Rough Estimate Generator</p>
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <h2>Customer Details</h2>
+
+        <label for="customerName">
+            Customer Name:
+        </label>
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Enter customer name"
+        >
+
+
+        <label for="customerPhone">
+            Customer Phone:
+        </label>
+
+        <input
+            type="tel"
+            id="customerPhone"
+            placeholder="Enter phone number"
+        >
+
+
+        <!-- JEWELLERY ITEMS -->
+
+        <h2>Jewellery Details</h2>
+
+
+        <table id="itemsTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Jewellery Item</th>
+                    <th>Quantity</th>
+                    <th>Weight (g)</th>
+                    <th>Amount (₹)</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <input
+                            type="text"
+                            placeholder="Item name"
+                        >
+                    </td>
+
+                    <td>
+                        <input
+                            type="number"
+                            placeholder="Qty"
+                            min="1"
+                        >
+                    </td>
+
+                    <td>
+                        <input
+                            type="number"
+                            placeholder="Weight (g)"
+                            min="0"
+                            step="any"
+                        >
+                    </td>
+
+                    <td>
+                        <input
+                            type="number"
+                            class="itemAmount"
+                            placeholder="Amount (₹)"
+                            min="0"
+                            step="any"
+                        >
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <button
+            type="button"
+            onclick="addItem()"
+        >
+            + ADD ITEM
+        </button>
+
+
+        <!-- ADJUSTMENT -->
+
+        <h2>Adjustment</h2>
+
+
+        <label for="adjustmentType">
+            Adjustment Type:
+        </label>
+
+
+        <select id="adjustmentType">
+
+            <option value="none">
+                No Adjustment
+            </option>
+
+            <option value="cash">
+                Cash Discount
+            </option>
+
+            <option value="oldGold">
+                Old Gold Exchange
+            </option>
+
+        </select>
+
+
+        <label for="adjustmentAmount">
+            Adjustment Amount:
+        </label>
+
+
+        <input
+            type="number"
+            id="adjustmentAmount"
+            placeholder="Enter amount"
+            min="0"
+            step="any"
+        >
+
+
+        <!-- TOTALS -->
+
+        <p>
+            Subtotal:
+            ₹<span id="subtotal">0.00</span>
+        </p>
+
+
+        <p>
+            Adjustment:
+            ₹<span id="adjustmentDisplay">0.00</span>
+        </p>
+
+
+        <h2>
+            Estimated Total:
+            ₹<span id="estimatedTotal">0.00</span>
+        </h2>
+
+
+        <!-- GENERATE -->
+
+        <button
+            type="button"
+            onclick="generateEstimate()"
+        >
+            GENERATE ESTIMATE
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         ESTIMATE PREVIEW
+    ========================== -->
+
+    <div
+        id="estimatePreview"
+        style="display: none;"
+    >
+
+
+        <!-- ROUGH ESTIMATE -->
+
+        <div class="estimate-title-box">
+            ROUGH ESTIMATE
+        </div>
+
+
+
+        <!-- SHOP HEADER -->
+
+        <div class="shop-header">
+
+
+            <div class="shop-logo">
+
+                <img
+                    src="logo.png"
+                    alt="Bikash Jewellers Logo"
+                >
+
+            </div>
+
+
+            <div class="shop-information">
+
+
+                <div class="shop-name">
+                    BIKASH JEWELLERS
+                </div>
+
+
+                <div class="shop-details">
+                    Kalibari Road, Near Kali Mandir, Opposite Unique Drug House
+                </div>
+
+
+                <div class="shop-details">
+                    Phone: 9832038946 |
+                    Email: bikashjewellerskalibari@gmail.com
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ESTIMATE NUMBER + DATE -->
+
+        <div class="estimate-info">
+
+
+            <div>
+
+                <strong>
+                    Estimate No:
+                </strong>
+
+                <span id="estimateNumber">
+                    RE-0001
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Date:
+                </strong>
+
+                <span id="estimateDate">
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="section-heading">
+            CUSTOMER DETAILS
+        </div>
+
+
+        <div class="customer-box">
+
+
+            <div>
+
+                <strong>
+                    Name:
+                </strong>
+
+                <span id="previewCustomerName">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Mobile:
+                </strong>
+
+                <span id="previewCustomerPhone">
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- JEWELLERY DETAILS -->
+
+        <div class="section-heading">
+            JEWELLERY DETAILS
+        </div>
+
+
+        <table class="estimate-items-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        S.No
+                    </th>
+
+                    <th>
+                        Jewellery Item
+                    </th>
+
+                    <th>
+                        Qty
+                    </th>
+
+                    <th>
+                        Weight (g)
+                    </th>
+
+                    <th>
+                        Amount (₹)
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="previewItems">
+
+            </tbody>
+
+
+        </table>
+
+
+
+        <!-- TOTALS -->
+
+        <div class="totals-box">
+
+
+            <div>
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span>
+                    ₹<span id="previewSubtotal">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Adjustment
+                </span>
+
+                <span>
+                    ₹<span id="previewAdjustment">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="grand-total">
+
+                <span>
+                    TOTAL
+                </span>
+
+                <span>
+                    ₹<span id="previewTotal">
+                        0.00
+                    </span>
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- THANK YOU -->
+
+        <div class="thank-you">
+            Thank You
+        </div>
+
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="estimate-actions">
+
+
+            <button
+                type="button"
+                onclick="window.print()"
+            >
+                🖨 PRINT / SAVE PDF
+            </button>
+
+
+            <button
+                type="button"
+                onclick="backToEdit()"
+            >
+                ← BACK TO EDIT
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+    }
+</script>
+
+
+</body>
+
+</html>

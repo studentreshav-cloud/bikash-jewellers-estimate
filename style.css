@@ -1,0 +1,514 @@
+/* ================================
+   GENERAL
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f7f0e6, #eee2d0);
+    color: #2b2118;
+}
+
+
+/* ================================
+   ENTRY FORM
+================================ */
+
+h1 {
+    text-align: center;
+    color: #6d421c;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #70451f;
+    margin-top: 25px;
+}
+
+input,
+select {
+    padding: 11px 13px;
+    border: 1px solid #cdb99d;
+    border-radius: 8px;
+    background: #fffdf9;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #a56b2a;
+    box-shadow: 0 0 0 3px rgba(165, 107, 42, 0.12);
+}
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #8a5a25;
+    color: white;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #6d421c;
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   INPUT TABLE
+================================ */
+
+#itemsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#itemsTable th {
+    background: #8a5a25;
+    color: white;
+    padding: 12px;
+}
+
+#itemsTable td {
+    padding: 9px;
+    border-bottom: 1px solid #eadfce;
+}
+
+
+/* ================================
+   PREVIEW AREA
+================================ */
+
+#estimatePreview {
+    display: none;
+
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 35px auto;
+    padding: 13mm;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 18px 50px rgba(70, 45, 20, 0.18);
+
+    border-top: 7px solid #8a5a25;
+}
+
+
+/* ================================
+   ROUGH ESTIMATE TITLE
+================================ */
+
+.estimate-title-box {
+    display: table;
+
+    margin: 0 auto 18px auto;
+
+    padding: 4px 11px;
+
+    border: 1.5px solid #8a5a25;
+    border-radius: 3px;
+
+    color: #8a5a25;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+
+    line-height: 1;
+}
+
+
+/* ================================
+   SHOP HEADER
+================================ */
+
+.shop-header {
+    position: relative;
+
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding-bottom: 13px;
+
+    border-bottom: 2px solid #c9a56d;
+}
+
+
+/* LOGO */
+
+.shop-logo {
+    position: absolute;
+    left: 0;
+    top: -8px;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-logo img {
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+}
+
+/* SHOP INFORMATION */
+
+.shop-information {
+    width: 100%;
+    text-align: center;
+}
+
+.shop-name {
+    color: #6d421c;
+
+    font-size: 39px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    line-height: 1.05;
+
+    margin-bottom: 8px;
+}
+
+.shop-details {
+    color: #5b5148;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ================================
+   ESTIMATE NUMBER + DATE
+================================ */
+
+.estimate-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+    margin-bottom: 16px;
+
+    padding: 8px 12px;
+
+    background: #faf5ed;
+
+    border: 1px solid #dfcdb4;
+    border-radius: 6px;
+
+    color: #4d4033;
+
+    font-size: 11px;
+}
+
+
+/* ================================
+   SECTION HEADINGS
+================================ */
+
+.section-heading {
+    padding: 7px;
+
+    background: #8a5a25;
+
+    color: white;
+
+    border-radius: 5px 5px 0 0;
+
+    text-align: center;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================================
+   CUSTOMER BOX
+================================ */
+
+.customer-box {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 11px 15px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #dfcdb4;
+    border-top: none;
+
+    background: #fffdf9;
+
+    font-size: 11px;
+}
+
+
+/* ================================
+   JEWELLERY TABLE
+================================ */
+
+.estimate-items-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+.estimate-items-table th,
+.estimate-items-table td {
+    border: 1px solid #cdb99d;
+
+    height: 32px;
+
+    padding: 6px;
+
+    font-size: 10.5px;
+
+    text-align: center;
+}
+
+.estimate-items-table th {
+    background: #f2e5d2;
+
+    color: #5b3818;
+
+    font-weight: 800;
+}
+
+.estimate-items-table th:nth-child(1),
+.estimate-items-table td:nth-child(1) {
+    width: 8%;
+}
+
+.estimate-items-table th:nth-child(2),
+.estimate-items-table td:nth-child(2) {
+    width: 40%;
+
+    text-align: left;
+}
+
+.estimate-items-table th:nth-child(3),
+.estimate-items-table td:nth-child(3) {
+    width: 11%;
+}
+
+.estimate-items-table th:nth-child(4),
+.estimate-items-table td:nth-child(4) {
+    width: 18%;
+}
+
+.estimate-items-table th:nth-child(5),
+.estimate-items-table td:nth-child(5) {
+    width: 23%;
+}
+
+
+/* ================================
+   TOTALS
+================================ */
+
+.totals-box {
+    width: 43%;
+
+    margin-left: auto;
+
+    margin-top: 16px;
+
+    border: 1px solid #dfcdb4;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+}
+
+.totals-box > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 7px 10px;
+
+    background: #fffdf9;
+
+    border-bottom: 1px solid #eadfce;
+
+    font-size: 11px;
+}
+
+.totals-box .grand-total {
+    background: #8a5a25;
+
+    color: white;
+
+    border-bottom: none;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    padding: 10px;
+}
+
+
+/* ================================
+   THANK YOU
+================================ */
+
+.thank-you {
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: #8a5a25;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================================
+   PRINT
+================================ */
+@media print {
+
+    /* Hide the shopkeeper's entry screen */
+    #entryScreen {
+        display: none !important;
+    }
+
+    /* Show ONLY the estimate */
+    #estimatePreview {
+        display: block !important;
+
+        width: 210mm;
+        min-height: 297mm;
+
+        margin: 0;
+        padding: 12mm;
+
+        background: white;
+
+        box-shadow: none;
+
+        border: none;
+    }
+
+    /* Hide editing/printing buttons from customer copy */
+    .estimate-actions {
+        display: none !important;
+    }
+
+    /* Make the browser print only the estimate */
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+}
+/* ================================
+   TABLET / MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 18px;
+    }
+
+    #entryScreen {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    input,
+    select {
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    button {
+        min-height: 46px;
+        font-size: 15px;
+        padding: 12px 18px;
+    }
+
+    #itemsTable {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #itemsTable input {
+        min-width: 120px;
+    }
+
+    #estimatePreview {
+        width: 100%;
+        max-width: 900px;
+        min-height: auto;
+        margin: 20px auto;
+        padding: 25px;
+    }
+
+    .shop-name {
+        font-size: 30px;
+    }
+
+    .shop-logo,
+    .shop-logo img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .shop-header {
+        min-height: 95px;
+    }
+
+    .totals-box {
+        width: 55%;
+    }
+
+}
